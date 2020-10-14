@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		F488F4D92537A7EA00C9F217 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F4D82537A7EA00C9F217 /* AppDelegate.swift */; };
 		F488F4DB2537A7EA00C9F217 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F4DA2537A7EA00C9F217 /* SceneDelegate.swift */; };
-		F488F4DD2537A7EA00C9F217 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F4DC2537A7EA00C9F217 /* ViewController.swift */; };
 		F488F4E02537A7EA00C9F217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F488F4DE2537A7EA00C9F217 /* Main.storyboard */; };
 		F488F4E32537A7EA00C9F217 /* Persistency.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F488F4E12537A7EA00C9F217 /* Persistency.xcdatamodeld */; };
 		F488F4E52537A7EB00C9F217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F488F4E42537A7EB00C9F217 /* Assets.xcassets */; };
 		F488F4E82537A7EB00C9F217 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F488F4E62537A7EB00C9F217 /* LaunchScreen.storyboard */; };
 		F488F4F32537A7EB00C9F217 /* PersistencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F4F22537A7EB00C9F217 /* PersistencyTests.swift */; };
 		F488F4FE2537A7EB00C9F217 /* PersistencyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F4FD2537A7EB00C9F217 /* PersistencyUITests.swift */; };
+		F488F5112537A9FB00C9F217 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F50E2537A9FB00C9F217 /* EditViewController.swift */; };
+		F488F5122537A9FB00C9F217 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F50F2537A9FB00C9F217 /* DetailViewController.swift */; };
+		F488F5132537A9FB00C9F217 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488F5102537A9FB00C9F217 /* MasterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		F488F4D52537A7EA00C9F217 /* Persistency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Persistency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F488F4D82537A7EA00C9F217 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F488F4DA2537A7EA00C9F217 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F488F4DC2537A7EA00C9F217 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F488F4DF2537A7EA00C9F217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F488F4E22537A7EA00C9F217 /* Persistency.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistency.xcdatamodel; sourceTree = "<group>"; };
 		F488F4E42537A7EB00C9F217 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,9 @@
 		F488F4F92537A7EB00C9F217 /* PersistencyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersistencyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F488F4FD2537A7EB00C9F217 /* PersistencyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyUITests.swift; sourceTree = "<group>"; };
 		F488F4FF2537A7EB00C9F217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F488F50E2537A9FB00C9F217 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditViewController.swift; path = ../../EditList/EditList/EditViewController.swift; sourceTree = "<group>"; };
+		F488F50F2537A9FB00C9F217 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../../EditList/EditList/DetailViewController.swift; sourceTree = "<group>"; };
+		F488F5102537A9FB00C9F217 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = ../../EditList/EditList/MasterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +105,11 @@
 		F488F4D72537A7EA00C9F217 /* Persistency */ = {
 			isa = PBXGroup;
 			children = (
+				F488F50F2537A9FB00C9F217 /* DetailViewController.swift */,
+				F488F50E2537A9FB00C9F217 /* EditViewController.swift */,
+				F488F5102537A9FB00C9F217 /* MasterViewController.swift */,
 				F488F4D82537A7EA00C9F217 /* AppDelegate.swift */,
 				F488F4DA2537A7EA00C9F217 /* SceneDelegate.swift */,
-				F488F4DC2537A7EA00C9F217 /* ViewController.swift */,
 				F488F4DE2537A7EA00C9F217 /* Main.storyboard */,
 				F488F4E42537A7EB00C9F217 /* Assets.xcassets */,
 				F488F4E62537A7EB00C9F217 /* LaunchScreen.storyboard */,
@@ -261,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F488F4DD2537A7EA00C9F217 /* ViewController.swift in Sources */,
+				F488F5112537A9FB00C9F217 /* EditViewController.swift in Sources */,
 				F488F4E32537A7EA00C9F217 /* Persistency.xcdatamodeld in Sources */,
+				F488F5122537A9FB00C9F217 /* DetailViewController.swift in Sources */,
 				F488F4D92537A7EA00C9F217 /* AppDelegate.swift in Sources */,
+				F488F5132537A9FB00C9F217 /* MasterViewController.swift in Sources */,
 				F488F4DB2537A7EA00C9F217 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
