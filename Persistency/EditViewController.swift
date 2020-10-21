@@ -19,8 +19,14 @@ class EditViewController: UIViewController {
         nameInput.text = self.person?.name
     }
     
+    
     @IBAction func saveAndExitButtonPressed(_ sender: UIButton) {
         self.person?.name = nameInput.text!
+        do {
+            try managedContext?.save()
+        } catch {
+            fatalError("Failed to save context: \(error)")
+        }
         dismiss(animated: true)
     }
     
