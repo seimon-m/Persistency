@@ -19,11 +19,12 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         guard container != nil else {
             fatalError("This view needs a persistent container.")
         }
+        initializeFetchedResultsController()
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(sender:)))
         self.navigationItem.rightBarButtonItem = addButton
         
-        initializeFetchedResultsController()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -71,8 +72,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        return fetchedResultsController.sections!.count
-        return 1
+        return fetchedResultsController.sections!.count
+//        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,18 +110,51 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
             container.viewContext.delete(fetchedResultsController.object(at: indexPath))
+            
             do {
                 try container.viewContext.save()
-                tableView.reloadData()
+//                tableView.reloadData()
             } catch {
                 fatalError("Failed to delete row: \(error)")
             }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+            tableView.beginUpdates()
+        }
+         
+        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+            switch type {
+                case .insert:
+                    tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
+                case .delete:
+                    tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
+                case .move:
+                    break
+                case .update:
+                    break
+            }
+        }
+         
+        func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+            switch type {
+                case .insert:
+                    tableView.insertRows(at: [newIndexPath!], with: .fade)
+                case .delete:
+                    tableView.deleteRows(at: [indexPath!], with: .fade)
+                case .update:
+                    tableView.reloadRows(at: [indexPath!], with: .fade)
+                case .move:
+                    tableView.moveRow(at: indexPath!, to: newIndexPath!)
+                }
+        }
+         
+        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+            tableView.endUpdates()
+        }
     
 
     /*
