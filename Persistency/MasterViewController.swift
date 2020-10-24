@@ -39,15 +39,20 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
     
     @objc func insertNewObject(sender: UIBarButtonItem) {
-        print("add")
-        let person = Person(context: self.container.viewContext)
-        person.name = "Simon"
-        do {
-            try container.viewContext.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Could not save person. \(nserror)")
-        }
+//        print("add")
+//        let person = Person(context: self.container.viewContext)
+//        person.name = "Simon"
+//        do {
+//            try container.viewContext.save()
+//        } catch {
+//            let nserror = error as NSError
+//            fatalError("Could not save person. \(nserror)")
+//        }
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let editVC = storyBoard.instantiateViewController(withIdentifier:"editVC") as! EditViewController
+        editVC.managedContext = self.container.viewContext
+        editVC.modalPresentationStyle = .fullScreen
+        self.show(editVC, sender: self)
     }
     
     // MARK: - Core Data

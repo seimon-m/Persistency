@@ -12,7 +12,7 @@ class EditViewController: UIViewController {
     
     @IBOutlet weak var nameInput: UITextField!
     var person : Person?
-    var managedContext : NSManagedObjectContext?
+    var managedContext : NSManagedObjectContext!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,13 +21,30 @@ class EditViewController: UIViewController {
     
     
     @IBAction func saveAndExitButtonPressed(_ sender: UIButton) {
-        self.person?.name = nameInput.text!
-        do {
-            try managedContext?.save()
-        } catch {
-            fatalError("Failed to save context: \(error)")
+        if (self.person == nil) {
+            print("from MasterView")
+            let newPerson = Person(context: self.managedContext)
+            newPerson.name = nameInput.text!
+            
+            do {
+                try self.managedContext?.save()
+            } catch {
+                fatalError("Failed to save context: \(error)")
+            }
+            dismiss(animated: true)
+            
+        } else {
+            print("from DetailView")
+            self.person?.name = nameInput.text!
+            
+            do {
+                try self.managedContext?.save()
+            } catch {
+                fatalError("Failed to save context: \(error)")
+            }
+            dismiss(animated: true)
         }
-        dismiss(animated: true)
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
